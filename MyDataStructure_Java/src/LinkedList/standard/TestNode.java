@@ -64,6 +64,25 @@ public class TestNode {
         }
         temp.setNext(temp.getNext().getNext());
     }
+    //头插法逆置,就地逆置
+    public void reverse(){
+        Node temp = head;
+        if(getLength() < 2){
+            return;
+        }
+        Node p = temp.getNext().getNext();
+        temp.getNext().setNext(null);
+        while (p != null){
+            Node q = p.getNext();
+            p.setNext(getNodeByIndex(1));
+            temp.setNext(p);
+            p=q;
+            //print();
+
+        }
+    }
+
+
     public Node getNodeByIndex(int index){
         if(index < 1 && index > getLength()-1){
             System.out.println("index error");
@@ -118,6 +137,7 @@ public class TestNode {
         testNode.deleteNodeByIndex(1);
         System.out.println(" get node by index: "+ testNode.getNodeByIndex(5).getData());
         testNode.order();
+        testNode.reverse();
         testNode.print();
         System.out.println("Length: " + testNode.getLength());
     }
