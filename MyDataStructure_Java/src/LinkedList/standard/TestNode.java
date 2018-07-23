@@ -83,6 +83,7 @@ public class TestNode {
     }
 
 
+
     public Node getNodeByIndex(int index){
         if(index < 1 && index > getLength()-1){
             System.out.println("index error");
