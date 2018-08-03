@@ -132,7 +132,7 @@ public class TestNode {
                 }
             }
             if (minIndex != i ){
-                int tempData = getNodeByIndex(minIndex).getData();
+                int tempData = minData;
                 getNodeByIndex(minIndex).setData(getNodeByIndex(i).getData());
                 getNodeByIndex(i).setData(tempData);
             }
