@@ -18,11 +18,11 @@ public class TestArrayList {
     public void bubbleSort(int[] test){
         int length = test.length;
 
-        for(int i= length-1; i>0;i--){
+        for(int i= 0; i<length;i++){
             boolean flag = false;
-            for(int j = 0; j<i;j++){
-                if(test[j]>test[j+1]){
-                    test = swap(test,j,j+1);
+            for(int j = length-1; j>i;j--){
+                if(test[j]<test[j-1]){
+                    test = swap(test,j,j-1);
                     flag = true;
                 }
             }
