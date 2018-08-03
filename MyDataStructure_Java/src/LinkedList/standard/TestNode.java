@@ -1,7 +1,5 @@
 package LinkedList.standard;
 
-import sun.security.util.Length;
-
 public class TestNode {
     private Node head = new Node();
     public void print(){
@@ -90,13 +88,13 @@ public class TestNode {
             return head;
         }
         Node temp = head;
-        for(int i = 1;i<index;i++){
+        for(int i = 1;i<=index;i++){
             temp = temp.getNext();
         }
-        return temp.getNext();
+        return temp;
     }
     //冒泡排序（bubble sort）
-    public void order(){
+    public void orderByBubbleSort(){
         Node temp = head;
         if(getLength()<2){
             return;
@@ -118,12 +116,36 @@ public class TestNode {
         }
     }
 
+    //简单选择排序 Simple selection sort
+    public void orderBySimpleSelectionSort(){
+        Node temp = head;
+        if(getLength()<2){
+            return;
+        }
+        for(int i = 1; i<=getLength()-1;i++){
+            int minData = getNodeByIndex(i).getData();
+            int minIndex = i;
+            for(int j = i+1;j<=getLength();j++){
+                if(minData>getNodeByIndex(j).getData()){
+                    minData = getNodeByIndex(j).getData();
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i ){
+                int tempData = getNodeByIndex(minIndex).getData();
+                getNodeByIndex(minIndex).setData(getNodeByIndex(i).getData());
+                getNodeByIndex(i).setData(tempData);
+            }
+        }
+
+    }
+
     public static void main(String[] args){
         Node newNode1 = new Node(7);
-        Node newNode2 = new Node(0);
+        Node newNode2 = new Node(77);
         Node newNode3 = new Node(1);
         Node newNode4 = new Node(8);
-        Node newNode5 = new Node(9);
+        Node newNode5 = new Node(4);
         Node newNode6 = new Node(5);
         TestNode testNode = new TestNode();
         testNode.addNode(newNode1);
@@ -136,10 +158,11 @@ public class TestNode {
         Node insertNode = new Node(2);
         testNode.insertNodeByIndex(3,insertNode);
         testNode.deleteNodeByIndex(1);
-        System.out.println(" get node by index: "+ testNode.getNodeByIndex(5).getData());
-        testNode.order();
-        testNode.reverse();
+        testNode.orderBySimpleSelectionSort();
+        //testNode.orderByBubbleSort();
+        //testNode.reverse();
         testNode.print();
+        System.out.println(" get node by index: "+ testNode.getNodeByIndex(3).getData());
         System.out.println("Length: " + testNode.getLength());
     }
 
