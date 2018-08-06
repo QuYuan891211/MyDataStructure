@@ -46,6 +46,25 @@ public class TestArrayList {
         print(test);
     }
 
+    //shell sort
+    public void shellSort(int[] testArray){
+        int length = testArray.length;
+        int increasement = length/3+1;
+        while (increasement>=1){
+            int i = 0;
+            for(int j = i+increasement;j<length;j++){
+                if(testArray[i] > testArray [j]){
+                    swap(testArray,i,j);
+                }
+                i++;
+            }
+            increasement = increasement/2;
+        }
+
+    print(testArray);
+
+
+    }
     //交换数组中两个数的位置
     protected int[] swap(int[] test,int index1, int index2){
         int temp = test[index1];
@@ -67,7 +86,7 @@ public class TestArrayList {
 
         System.out.println("排序结束");
         //testArrayList.bubbleSort(testArray);
-        testArrayList.selectionSort(testArray);
-
+        //testArrayList.selectionSort(testArray);
+        testArrayList.shellSort(testArray);
     }
 }
