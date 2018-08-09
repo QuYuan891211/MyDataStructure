@@ -84,13 +84,12 @@ public class TestArrayList {
         TestArrayList testArrayList = new TestArrayList();
 //        testArrayList.insertSort(testArray);
 
-        System.out.println("排序结束");
         //testArrayList.bubbleSort(testArray);
         //testArrayList.selectionSort(testArray);
         //testArrayList.shellSort(testArray);
         testArrayList.mergeSort(testArray);
     }
-
+    // 归并排序
     public static void mergeSort(int[] data) {
         sort(data, 0, data.length - 1);
     }
@@ -101,14 +100,18 @@ public class TestArrayList {
         // 找出中间索引
         int center = (left + right) / 2;
         // 对左边数组进行递归
+        System.out.println("对左边数组进行递归");
+        System.out.println("参数： "+left + " "+ center + " " + right);
         sort(data, left, center);
+        System.out.println("对右边数组进行递归");
+        System.out.println("参数： "+left + " "+ center + " " + right);
         // 对右边数组进行递归
         sort(data, center + 1, right);
         // 合并
         merge(data, left, center, right);
         print(data);
         System.out.println("----------------");
-        System.out.println(left + " " + right);
+        System.out.println(left + " "+ center + " " + right);
     }
 
     /**
@@ -153,5 +156,7 @@ public class TestArrayList {
             data[tmp] = tmpArr[tmp++];
         }
     }
+
+
 
 }
