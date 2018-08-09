@@ -13,14 +13,14 @@ public class QuickSortTest {
         System.out.println("low: " + low);
         System.out.println("high: " + high);
         //int length = testArray.length;
-        if(low<high){
+        while(low<high){
             pivot = partition(testArray,low,high);
             System.out.println("pivot: " + pivot);
 
             print(testArray);
             sort(testArray,low,pivot-1);
-            System.out.println("执行右边:-------- " );
-            sort(testArray,pivot+1,high);
+            System.out.println("执行右侧------");
+            low =pivot + 1;
         }
     }
 
