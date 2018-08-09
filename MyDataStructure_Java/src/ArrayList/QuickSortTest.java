@@ -25,6 +25,8 @@ public class QuickSortTest {
     }
 
     public int partition(int[] testArray,int low,int high){
+        //优化性能
+        testArray = chosePivotKey(testArray,low,high);
         int pivotKey = testArray[low];
         while (low<high){
             while (low<high && testArray[high]>= pivotKey){ high--;}
@@ -51,4 +53,18 @@ public class QuickSortTest {
         System.out.println("---------------------------------------");
     }
 
+    //性能改进：三数取中(median-of-three)法
+    public int[] chosePivotKey(int[] testArray,int low,int high){
+        int median = low + (high-low)/2;
+        if(testArray[low]>testArray[high]){
+            swap(testArray,low,high);
+        }
+        if(testArray[low]>testArray[median]){
+            swap(testArray,low,median);
+        }
+        if(testArray[median]>testArray[high]){
+            swap(testArray,median,high);
+        }
+        return testArray;
+    }
 }
